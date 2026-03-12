@@ -19,7 +19,13 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
     }
 
-    void HandleMovement()
+    public void Move(InputAction.CallbackContext context)
+    {
+        movement = context.ReadValue<Vector2>();
+    // Debug.Log(movement);
+    }
+
+     void HandleMovement()
     {
         Vector3 currentPosition = rigidBody.position;
         Vector3 moveDirection = new Vector3(movement.x, 0f, movement.y);
@@ -29,12 +35,5 @@ public class PlayerController : MonoBehaviour
         newPosition.z = Mathf.Clamp(newPosition.z, -zClamp,zClamp);
 
         rigidBody.MovePosition(newPosition); 
-    }
-
-
-    public void Move(InputAction.CallbackContext context)
-    {
-        movement = context.ReadValue<Vector2>();
-       // Debug.Log(movement);
     }
 }

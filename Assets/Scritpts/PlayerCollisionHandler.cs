@@ -4,6 +4,6 @@ public class PlayerCollisionHandler : MonoBehaviour
 {
    void OnCollisionEnter(Collision other) 
    {
-    Debug.Log(other.gameObject.name);
+    Debug.Log("Collided with: " + other.gameObject.name);
    }
 }
