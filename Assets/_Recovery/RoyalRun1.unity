@@ -693,6 +693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollisionHandler
   animator: {fileID: 1593953743}
   collisionCooldown: 1
+  adjustChangeMoveSpeedAmount: -2
 --- !u!54 &1276391659
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -800,6 +801,7 @@ MonoBehaviour:
   chunkParent: {fileID: 686834889}
   chunkLength: 10
   moveSpeed: 8
+  minMoveSpeed: 2
 --- !u!4 &1392726144
 Transform:
   m_ObjectHideFlags: 0
