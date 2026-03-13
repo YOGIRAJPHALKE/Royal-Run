@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3481893531486322823}
-  - component: {fileID: 5550492960430233065}
+  - component: {fileID: 6564781717955176733}
   - component: {fileID: 4103843464232496444}
   m_Layer: 0
   m_Name: Apple
@@ -60,13 +60,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.027737744, z: -0, w: 0.99961525}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 5.06, y: 4.19, z: 5.06}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7827470034049178285}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 3.179, z: 0}
---- !u!114 &5550492960430233065
+--- !u!114 &6564781717955176733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,9 +75,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6228172069633777964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f86c7946b7d4782449b1c6192c376e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 378f3703fb7085346ae37a8dd3514a49, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pikup
+  m_EditorClassIdentifier: Assembly-CSharp::Apple
+  rotationSpeed: 100
 --- !u!65 &4103843464232496444
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -93,11 +94,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.15, y: 0.18, z: 0.16}
+  m_Size: {x: 0.15, y: 0.12, z: 0.16}
   m_Center: {x: 0, y: 0.13, z: 0}
 --- !u!1001 &2463315963774582294
 PrefabInstance:

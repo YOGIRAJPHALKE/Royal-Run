@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 175012055077232650}
-  - component: {fileID: -7944762151023785230}
+  - component: {fileID: -7511091121580104220}
   - component: {fileID: 7598842017613662086}
   m_Layer: 0
   m_Name: Coine
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 7212432914773087101}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7944762151023785230
+--- !u!114 &-7511091121580104220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,9 +43,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1163278845746803310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f86c7946b7d4782449b1c6192c376e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 882af00b548c34b4eb53de3885aafcb5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pikup
+  m_EditorClassIdentifier: Assembly-CSharp::Coin
+  rotationSpeed: 100
 --- !u!65 &7598842017613662086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61,7 +62,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

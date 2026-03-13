@@ -1,13 +1,23 @@
 using UnityEngine;
 
-public class Pikup : MonoBehaviour
+public abstract class Pikup : MonoBehaviour
 {
-    const string playerString = "Player"; 
+    [SerializeField] float rotationSpeed = 100f;
+    const string playerString = "Player";
+
+    void Update() 
+    {
+        transform.Rotate(0f, rotationSpeed*Time.deltaTime, 0f);
+    }
+
     void OnTriggerEnter(Collider other) 
     {
         if(other.gameObject.tag == playerString)
         {
-            Debug.Log (other.gameObject.name);
+            //Debug.Log (other.gameObject.name);
+            OnPickup();
+            Destroy(gameObject);
         }
     }
+    protected abstract void OnPickup();
 }
