@@ -7,8 +7,9 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] float minFOV = 20f;
     [SerializeField] float maxFOV = 60f;
-    [SerializeField]float zoomDuration = 1f;
-    [SerializeField]float zoomSpeedModifier = 5f;
+    [SerializeField] float zoomDuration = 1f;
+    [SerializeField] float zoomSpeedModifier = 5f;
+    [SerializeField] ParticleSystem SpeedupParticleSystem;
     CinemachineCamera cinemachineCamera;
 
     void Awake()
@@ -21,6 +22,10 @@ public class CameraController : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(ChangeFOVRoutine(SpeedAmount));
+        if(SpeedAmount>0)
+        {
+            SpeedupParticleSystem.Play();
+        }
     }
 
     IEnumerator ChangeFOVRoutine(float SpeedAmount)

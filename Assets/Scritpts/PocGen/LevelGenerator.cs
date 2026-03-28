@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-   [SerializeField] GameObject chunkPrefab;
+   [Header ("References")]
+   [Tooltip("References of a Chunk Prefab so it will render in our Game")][SerializeField] GameObject chunkPrefab;
+   [Tooltip("References of a ChunkParesnt Where all chunk will be seen")][SerializeField] Transform chunkParent;
+   [Tooltip("References of a Camera Controller(cinemachin Camera)")][SerializeField] CameraController cameraController;
+
+   [Header ("Chunk Setting")]
    [SerializeField] int startingChunkAmount = 12;
-   [SerializeField] Transform chunkParent;
-
    [SerializeField] float chunkLength =10f;
-   [SerializeField] float moveSpeed =08f;
-   [SerializeField] float minMoveSpeed = 2f;
 
-   [SerializeField] CameraController cameraController;
+   [Header ("Level Setting")]
+   [Tooltip("Normal Speed of Player")][SerializeField] float moveSpeed =08f;
+   [Tooltip("Minimum Speed of Player")][SerializeField] float minMoveSpeed = 2f;
+   [Tooltip("Maximum Speed of Player")][SerializeField] float maxMoveSpeed = 20f;
+   [Tooltip("Maximum gravity on the Game")][SerializeField] float maxGravity = -2f;
+   [Tooltip("Minimum gravity on the Game")][SerializeField] float minGravity = -22f;
+
+
 
    List<GameObject> chunks = new List<GameObject>();
 
@@ -28,17 +36,21 @@ public class LevelGenerator : MonoBehaviour
 
     public void ChangeChunkMoveSpeed(float speedAmount)
    {
-        moveSpeed += speedAmount;
+        float newMoveSpeed = moveSpeed + speedAmount;
+        newMoveSpeed = Mathf.Clamp(newMoveSpeed, minMoveSpeed, maxMoveSpeed);
        // Debug.Log(speedAmount);
 
-            if(moveSpeed < minMoveSpeed)
+            if(newMoveSpeed != moveSpeed)
             {
-                moveSpeed = minMoveSpeed;
+                moveSpeed = newMoveSpeed;
+                
+                float newGaravityZ = Physics.gravity.z - speedAmount;
+
+                newGaravityZ = Mathf.Clamp(newGaravityZ, minGravity, maxGravity);
+                Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, newGaravityZ);
+        
+                cameraController.ChangeCameraFOV(speedAmount);
             }
-        
-        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Physics.gravity.z - speedAmount);
-        
-        cameraController.ChangeCameraFOV(speedAmount);
    }
 
    void StartingSpawnChunk()
