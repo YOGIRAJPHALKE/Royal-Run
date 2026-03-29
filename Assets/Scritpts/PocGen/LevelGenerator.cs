@@ -8,6 +8,7 @@ public class LevelGenerator : MonoBehaviour
    [Tooltip("References of a Chunk Prefab so it will render in our Game")][SerializeField] GameObject chunkPrefab;
    [Tooltip("References of a ChunkParesnt Where all chunk will be seen")][SerializeField] Transform chunkParent;
    [Tooltip("References of a Camera Controller(cinemachin Camera)")][SerializeField] CameraController cameraController;
+   [Tooltip("References of a Score Manager")][SerializeField] ScoreManager scoreManager;
 
    [Header ("Chunk Setting")]
    [SerializeField] int startingChunkAmount = 12;
@@ -19,7 +20,6 @@ public class LevelGenerator : MonoBehaviour
    [Tooltip("Maximum Speed of Player")][SerializeField] float maxMoveSpeed = 20f;
    [Tooltip("Maximum gravity on the Game")][SerializeField] float maxGravity = -2f;
    [Tooltip("Minimum gravity on the Game")][SerializeField] float minGravity = -22f;
-
 
 
    List<GameObject> chunks = new List<GameObject>();
@@ -66,9 +66,12 @@ public class LevelGenerator : MonoBehaviour
         float spawnPositionZ = CalculateSpawnPositionZ() ;
 
         Vector3 chunkSpawnPos = new Vector3(transform.position.x,transform.position.y, spawnPositionZ);
-        GameObject newChunk =Instantiate(chunkPrefab, chunkSpawnPos, Quaternion.identity, chunkParent);
+        GameObject newChunkGo =Instantiate(chunkPrefab, chunkSpawnPos, Quaternion.identity, chunkParent);
 
-        chunks.Add(newChunk);
+        chunks.Add(newChunkGo);
+
+        Chunk newChunk = newChunkGo.GetComponent<Chunk>();
+        newChunk.Init(this,scoreManager);
    }
 
    float CalculateSpawnPositionZ()
