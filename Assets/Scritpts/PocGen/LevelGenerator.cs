@@ -5,7 +5,8 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
    [Header ("References")]
-   [Tooltip("References of a Chunk Prefab so it will render in our Game")][SerializeField] GameObject chunkPrefab;
+   [Tooltip("References of a Array Chunk Prefabs so it will render in our Game")][SerializeField] GameObject [] chunkPrefabs;
+    [Tooltip("References of a CheckPoint chunk Prefab so it will render in our Game")][SerializeField] GameObject checkPointchunkPrefab;
    [Tooltip("References of a ChunkParesnt Where all chunk will be seen")][SerializeField] Transform chunkParent;
    [Tooltip("References of a Camera Controller(cinemachin Camera)")][SerializeField] CameraController cameraController;
    [Tooltip("References of a Score Manager")][SerializeField] ScoreManager scoreManager;
@@ -13,6 +14,8 @@ public class LevelGenerator : MonoBehaviour
    [Header ("Chunk Setting")]
    [SerializeField] int startingChunkAmount = 12;
    [SerializeField] float chunkLength =10f;
+   [SerializeField] int checkPointInterval = 3;
+   int chunkSpawned = 0;
 
    [Header ("Level Setting")]
    [Tooltip("Normal Speed of Player")][SerializeField] float moveSpeed =08f;
@@ -64,14 +67,26 @@ public class LevelGenerator : MonoBehaviour
    void SpawnChunk()
    {
         float spawnPositionZ = CalculateSpawnPositionZ() ;
-
+        GameObject chunkToSpawn; 
         Vector3 chunkSpawnPos = new Vector3(transform.position.x,transform.position.y, spawnPositionZ);
-        GameObject newChunkGo =Instantiate(chunkPrefab, chunkSpawnPos, Quaternion.identity, chunkParent);
+
+        if(chunkSpawned % checkPointInterval == 0 && chunkSpawned != 0)
+        {
+            chunkToSpawn = checkPointchunkPrefab;
+        }
+        else
+        {
+            chunkToSpawn = chunkPrefabs[Random.Range(0,chunkPrefabs.Length)];
+        }
+
+        GameObject newChunkGo =Instantiate(chunkToSpawn, chunkSpawnPos, Quaternion.identity, chunkParent);
 
         chunks.Add(newChunkGo);
 
         Chunk newChunk = newChunkGo.GetComponent<Chunk>();
         newChunk.Init(this,scoreManager);
+
+        chunkSpawned++;
    }
 
    float CalculateSpawnPositionZ()
