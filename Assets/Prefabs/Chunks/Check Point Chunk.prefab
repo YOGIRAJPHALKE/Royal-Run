@@ -819,6 +819,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7116437404887038009, guid: a5dcac6a5014e054e9eb2d53fdd59ffd, type: 3}
+      propertyPath: appleSpawnChance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7116437404887038009, guid: a5dcac6a5014e054e9eb2d53fdd59ffd, type: 3}
+      propertyPath: coineSpawnChance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3296095666210520525, guid: a5dcac6a5014e054e9eb2d53fdd59ffd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -912,7 +920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93072d65db5445d4ebb3321367dc304f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckPoint
-  checkPointTimeExtension: 4
+  checkPointTimeExtension: 5
 --- !u!65 &4961907926842121640
 BoxCollider:
   m_ObjectHideFlags: 0

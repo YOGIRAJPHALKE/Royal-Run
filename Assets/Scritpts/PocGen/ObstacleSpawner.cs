@@ -8,12 +8,23 @@
         [SerializeField] GameObject[] obstaclePrefabs;
         [SerializeField] float obstacleSpawnedTime = 2f;
         [SerializeField] Transform obstacleParent;
+        [SerializeField] float minObstacleSpawnTime =.4f;
 
         [SerializeField] float spawnWidth = 4f;
         
         void Start()
         {
         StartCoroutine(SpawnedObstaclesRoutine());
+        }
+
+        public void DecreaseObstacleSpawnTime(float amount)
+        {
+
+            obstacleSpawnedTime -= amount;
+            if (obstacleSpawnedTime <= minObstacleSpawnTime)
+            {
+                obstacleSpawnedTime = minObstacleSpawnTime;
+            }
         }
 
         IEnumerator SpawnedObstaclesRoutine()

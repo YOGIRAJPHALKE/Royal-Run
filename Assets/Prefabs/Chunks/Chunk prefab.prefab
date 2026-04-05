@@ -111,7 +111,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1.2057458, z: 1}
-  m_Center: {x: 0, y: 0.10287315, z: 0}
+  m_Center: {x: 0, y: 0.19, z: 0}
 --- !u!1 &6686156463724500987
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   - -3
   - 0
   - 3
-  appleSpawnChance: 0.3
+  appleSpawnChance: 0.12
   coineSpawnChance: 0.5
   coineSeparationLength: 2
 --- !u!1001 &1433410075996011416
