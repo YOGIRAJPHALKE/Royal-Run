@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         DecreaseTime();
+        HandleRestart();
     }
 
     public void IncreaseTime(float amount)
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour
         playerController.enabled = false;
         gameOverText.SetActive(true);
         Time.timeScale = .1f;
-        
+
     }
 
     void DecreaseTime()
@@ -51,4 +53,18 @@ public class GameManager : MonoBehaviour
             PlayerGameOver();
         }
     }
+
+    void HandleRestart()
+{
+    if ((timeLeft <= 0f) &&(Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Space)))
+    {
+        RestartGame();
+    }
+}
+
+void RestartGame()
+{
+    Time.timeScale = 1f; //(reset slow motion)
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+}
 }

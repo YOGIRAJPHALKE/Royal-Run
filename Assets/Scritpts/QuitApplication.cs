@@ -1,15 +1,24 @@
 using UnityEngine;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
 
 public class QuitApplication : MonoBehaviour
 {
-    // Update is called once per frame
     void Update()
     {
-        if(Keyboard.current.escapeKey.isPressed)
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            Debug.Log("You clecked on esc key, so you want to quit Game.");
-            Application.Quit();
+            QuitGame();
         }
+    }
+
+    void QuitGame()
+    {
+        //Debug.Log("ESC pressed → Quitting Game");
+
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
     }
 }
